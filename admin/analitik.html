@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analitik - Admin Panel</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Dijital Mağaza</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Yönetici</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="urunler.html">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ürünler</span>
+                        <span class="badge">156</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siparisler.html">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Siparişler</span>
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="duyurular.html">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="musteriler.html">
+                        <i class="fa fa-users"></i>
+                        <span>Müşteriler</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="analitik.html">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ayarlar.html">
+                        <i class="fa fa-cog"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="btn-view-site">
+                <i class="fa fa-external-link"></i>
+                Siteyi Görüntüle
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="btn-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h2>Analitik & Raporlar</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Ara...">
+                </div>
+                <div class="notifications">
+                    <button class="btn-notification">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="btn-user">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content-section">
+            <!-- Period Selector -->
+            <div class="card">
+                <div class="card-body" style="padding: 15px 25px;">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <select class="form-control" onchange="changePeriod(this.value)">
+                                <option value="7">Son 7 Gün</option>
+                                <option value="30" selected>Son 30 Gün</option>
+                                <option value="90">Son 3 Ay</option>
+                                <option value="365">Bu Yıl</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" placeholder="Başlangıç">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" placeholder="Bitiş">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="exportReport()">
+                                <i class="fa fa-download"></i> Rapor İndir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₺145,678</h3>
+                        <p>Toplam Gelir</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+23% önceki döneme göre</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-2">
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>3,456</h3>
+                        <p>Toplam Sipariş</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+15% önceki döneme göre</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-3">
+                    <div class="stat-icon">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₺42.15</h3>
+                        <p>Ort. Sipariş Değeri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+8% önceki döneme göre</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-4">
+                    <div class="stat-icon">
+                        <i class="fa fa-percent"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>%3.2</h3>
+                        <p>Dönüşüm Oranı</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+0.5% önceki döneme göre</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Revenue Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa fa-line-chart"></i> Gelir Trendi</h3>
+                    <div class="card-actions">
+                        <select class="form-control" style="width: auto; display: inline-block;">
+                            <option>Günlük</option>
+                            <option>Haftalık</option>
+                            <option selected>Aylık</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="height: 350px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row 1 -->
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-pie-chart"></i> Kategori Dağılımı</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="categoryDistChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-bar-chart"></i> Aylık Satış Karşılaştırma</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="monthlySalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row 2 -->
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-users"></i> Müşteri Büyümesi</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="customerGrowthChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-clock-o"></i> Saatlik Sipariş Dağılımı</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="hourlyOrdersChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row 3 -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-star"></i> En Çok Satan Ürünler</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="topProductsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fa fa-credit-card"></i> Ödeme Yöntemleri</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px;">
+                                <canvas id="paymentMethodsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="admin-script.js"></script>
+    <script>
+        // Revenue Trend Chart
+        const revenueCtx = document.getElementById('revenueChart');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+                datasets: [{
+                    label: 'Gelir (₺)',
+                    data: [12000, 19000, 15000, 25000, 22000, 30000, 28000, 35000, 32000, 38000, 42000, 45000],
+                    borderColor: '#1b5e20',
+                    backgroundColor: 'rgba(27, 94, 32, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '₺' + context.parsed.y.toLocaleString('tr-TR');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '₺' + (value / 1000) + 'K';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Category Distribution Chart
+        const categoryCtx = document.getElementById('categoryDistChart');
+        new Chart(categoryCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Dijital Oyunlar', 'Yazılım & Kod', 'Tasarım & Grafik', 'Dijital Eğitim', 'Diğer'],
+                datasets: [{
+                    data: [35, 28, 22, 12, 3],
+                    backgroundColor: ['#667eea', '#f093fb', '#4facfe', '#43e97b', '#ffa726'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Monthly Sales Comparison Chart
+        const monthlySalesCtx = document.getElementById('monthlySalesChart');
+        new Chart(monthlySalesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz'],
+                datasets: [{
+                    label: '2024',
+                    data: [450, 520, 480, 590, 620, 680],
+                    backgroundColor: '#1b5e20'
+                }, {
+                    label: '2023',
+                    data: [380, 420, 390, 480, 510, 550],
+                    backgroundColor: '#81c784'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Customer Growth Chart
+        const customerGrowthCtx = document.getElementById('customerGrowthChart');
+        new Chart(customerGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+                datasets: [{
+                    label: 'Yeni Müşteriler',
+                    data: [45, 52, 48, 65, 72, 68, 85, 92, 88, 95, 102, 110],
+                    borderColor: '#039be5',
+                    backgroundColor: 'rgba(3, 155, 229, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Hourly Orders Chart
+        const hourlyOrdersCtx = document.getElementById('hourlyOrdersChart');
+        new Chart(hourlyOrdersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['00-04', '04-08', '08-12', '12-16', '16-20', '20-24'],
+                datasets: [{
+                    label: 'Sipariş Sayısı',
+                    data: [45, 78, 234, 456, 389, 267],
+                    backgroundColor: '#fb8c00'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Top Products Chart
+        const topProductsCtx = document.getElementById('topProductsChart');
+        new Chart(topProductsCtx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['PUBG Mobile UC', 'Logo Tasarım', 'PHP Script', 'Canva Eğitim', 'Unity Proje'],
+                datasets: [{
+                    label: 'Satış Adedi',
+                    data: [234, 156, 98, 187, 145],
+                    backgroundColor: ['#667eea', '#f093fb', '#4facfe', '#43e97b', '#ffa726']
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Payment Methods Chart
+        const paymentMethodsCtx = document.getElementById('paymentMethodsChart');
+        new Chart(paymentMethodsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Kredi Kartı', 'Banka Transferi', 'Havale/EFT', 'Dijital Cüzdan'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ['#1b5e20', '#039be5', '#fb8c00', '#e53935'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Period change
+        function changePeriod(days) {
+            showNotification('Rapor dönemi değiştirildi: Son ' + days + ' gün', 'info');
+        }
+        
+        // Export report
+        function exportReport() {
+            showNotification('Rapor indiriliyor...', 'info');
+        }
+    </script>
+</body>
+</html>

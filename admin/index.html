@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Admin Panel - Dijital Ürünler Mağazası</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Dijital Mağaza</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Yönetici</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="javascript:void(0)" onclick="showSection('dashboard')">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('products')">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ürünler</span>
+                        <span class="badge">156</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('orders')">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Siparişler</span>
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('announcements')">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('customers')">
+                        <i class="fa fa-users"></i>
+                        <span>Müşteriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('analytics')">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" onclick="showSection('settings')">
+                        <i class="fa fa-cog"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="btn-view-site">
+                <i class="fa fa-external-link"></i>
+                Siteyi Görüntüle
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="btn-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h2 id="page-title">Dashboard</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Ara...">
+                </div>
+                <div class="notifications">
+                    <button class="btn-notification" onclick="showNotifications()">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="btn-user">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="content-section">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>156</h3>
+                        <p>Toplam Ürün</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+12% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-2">
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>1,234</h3>
+                        <p>Toplam Sipariş</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+8% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-3">
+                    <div class="stat-icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₺45,678</h3>
+                        <p>Aylık Gelir</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+23% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-4">
+                    <div class="stat-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>892</h3>
+                        <p>Aktif Müşteri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+15% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Satış Grafiği</h3>
+                        <div class="chart-actions">
+                            <select class="chart-period">
+                                <option>Son 7 Gün</option>
+                                <option>Son 30 Gün</option>
+                                <option>Son 3 Ay</option>
+                                <option>Bu Yıl</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Kategori Dağılımı</h3>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Orders & Top Products -->
+            <div class="data-row">
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Son Siparişler</h3>
+                        <a href="javascript:void(0)" onclick="showSection('orders')" class="btn-view-all">Tümünü Gör</a>
+                    </div>
+                    <div class="data-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sipariş No</th>
+                                    <th>Müşteri</th>
+                                    <th>Ürün</th>
+                                    <th>Tutar</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#12345</td>
+                                    <td>Ahmet Yılmaz</td>
+                                    <td>PUBG Mobile UC</td>
+                                    <td>₺500</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12344</td>
+                                    <td>Ayşe Demir</td>
+                                    <td>Logo Tasarım Paketi</td>
+                                    <td>₺1,800</td>
+                                    <td><span class="badge badge-warning">Beklemede</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12343</td>
+                                    <td>Mehmet Kaya</td>
+                                    <td>PHP Script Paketi</td>
+                                    <td>₺2,800</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12342</td>
+                                    <td>Fatma Şahin</td>
+                                    <td>Canva Eğitim PDF</td>
+                                    <td>₺325</td>
+                                    <td><span class="badge badge-info">İşleniyor</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12341</td>
+                                    <td>Ali Öztürk</td>
+                                    <td>Unity Oyun Projesi</td>
+                                    <td>₺1,365</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>En Çok Satan Ürünler</h3>
+                    </div>
+                    <div class="data-body">
+                        <div class="top-products">
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/pugb.png" alt="PUBG">
+                                </div>
+                                <div class="product-info">
+                                    <h4>PUBG Mobile UC</h4>
+                                    <p>234 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺117,000</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/logo tasarım paketi.png" alt="Logo">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Logo Tasarım Paketi</h4>
+                                    <p>156 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺280,800</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/php.png" alt="PHP">
+                                </div>
+                                <div class="product-info">
+                                    <h4>PHP Script Paketi</h4>
+                                    <p>98 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺274,400</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/canva.png" alt="Canva">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Canva Eğitim PDF</h4>
+                                    <p>187 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺60,775</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Products Section -->
+        <div id="products-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Ürün Yönetimi</h2>
+                <button class="btn-primary" onclick="alert('Yeni ürün ekleme formu açılacak')">
+                    <i class="fa fa-plus"></i> Yeni Ürün Ekle
+                </button>
+            </div>
+            
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <input type="text" class="search-input" placeholder="Ürün ara...">
+                    <select class="filter-select">
+                        <option>Tüm Kategoriler</option>
+                        <option>Dijital Oyunlar</option>
+                        <option>Yazılım & Kod</option>
+                        <option>Tasarım & Grafik</option>
+                        <option>Dijital Eğitim</option>
+                    </select>
+                </div>
+                <div class="filter-right">
+                    <button class="btn-filter"><i class="fa fa-filter"></i> Filtrele</button>
+                    <button class="btn-export"><i class="fa fa-download"></i> Dışa Aktar</button>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="../images/product/large-size/pugb.png" alt="PUBG">
+                        <div class="product-card-actions">
+                            <button class="btn-action" onclick="alert('Ürün düzenleme')"><i class="fa fa-edit"></i></button>
+                            <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Ürün silindi')"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-category">Dijital Oyunlar</span>
+                        <h4>PUBG Mobile UC Paketi</h4>
+                        <div class="product-stats">
+                            <span><i class="fa fa-shopping-cart"></i> 234 satış</span>
+                            <span><i class="fa fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">₺500</span>
+                            <span class="stock">Stokta: 50</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="../images/product/large-size/logo tasarım paketi.png" alt="Logo">
+                        <div class="product-card-actions">
+                            <button class="btn-action" onclick="alert('Ürün düzenleme')"><i class="fa fa-edit"></i></button>
+                            <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Ürün silindi')"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-category">Tasarım & Grafik</span>
+                        <h4>Logo Tasarım Paketi</h4>
+                        <div class="product-stats">
+                            <span><i class="fa fa-shopping-cart"></i> 156 satış</span>
+                            <span><i class="fa fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">₺1,800</span>
+                            <span class="stock">Stokta: 100</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="../images/product/large-size/php.png" alt="PHP">
+                        <div class="product-card-actions">
+                            <button class="btn-action" onclick="alert('Ürün düzenleme')"><i class="fa fa-edit"></i></button>
+                            <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Ürün silindi')"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-category">Yazılım & Kod</span>
+                        <h4>PHP Script Paketi</h4>
+                        <div class="product-stats">
+                            <span><i class="fa fa-shopping-cart"></i> 98 satış</span>
+                            <span><i class="fa fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">₺2,800</span>
+                            <span class="stock">Stokta: 75</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="../images/product/large-size/canva.png" alt="Canva">
+                        <div class="product-card-actions">
+                            <button class="btn-action" onclick="alert('Ürün düzenleme')"><i class="fa fa-edit"></i></button>
+                            <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Ürün silindi')"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-category">Dijital Eğitim</span>
+                        <h4>Canva Eğitim PDF</h4>
+                        <div class="product-stats">
+                            <span><i class="fa fa-shopping-cart"></i> 187 satış</span>
+                            <span><i class="fa fa-star"></i> 4.6</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">₺325</span>
+                            <span class="stock">Stokta: 200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Orders Section -->
+        <div id="orders-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Sipariş Yönetimi</h2>
+                <div class="header-actions">
+                    <select class="filter-select">
+                        <option>Tüm Siparişler</option>
+                        <option>Beklemede</option>
+                        <option>İşleniyor</option>
+                        <option>Tamamlandı</option>
+                        <option>İptal Edildi</option>
+                    </select>
+                    <button class="btn-export"><i class="fa fa-download"></i> Dışa Aktar</button>
+                </div>
+            </div>
+            
+            <div class="orders-table-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Sipariş No</th>
+                            <th>Müşteri</th>
+                            <th>Ürün</th>
+                            <th>Tarih</th>
+                            <th>Tutar</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td><strong>#12345</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Ahmet Yılmaz</span>
+                                </div>
+                            </td>
+                            <td>PUBG Mobile UC Paketi</td>
+                            <td>07.12.2024 14:30</td>
+                            <td><strong>₺500</strong></td>
+                            <td><span class="badge badge-success">Tamamlandı</span></td>
+                            <td>
+                                <button class="btn-action" onclick="alert('Sipariş detayları')"><i class="fa fa-eye"></i></button>
+                                <button class="btn-action" onclick="alert('Sipariş düzenle')"><i class="fa fa-edit"></i></button>
+                                <button class="btn-action" onclick="alert('Fatura yazdır')"><i class="fa fa-print"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td><strong>#12344</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Ayşe Demir</span>
+                                </div>
+                            </td>
+                            <td>Logo Tasarım Paketi</td>
+                            <td>07.12.2024 12:15</td>
+                            <td><strong>₺1,800</strong></td>
+                            <td><span class="badge badge-warning">Beklemede</span></td>
+                            <td>
+                                <button class="btn-action" onclick="alert('Sipariş detayları')"><i class="fa fa-eye"></i></button>
+                                <button class="btn-action" onclick="alert('Sipariş düzenle')"><i class="fa fa-edit"></i></button>
+                                <button class="btn-action" onclick="alert('Fatura yazdır')"><i class="fa fa-print"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td><strong>#12343</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Mehmet Kaya</span>
+                                </div>
+                            </td>
+                            <td>PHP Script Paketi</td>
+                            <td>06.12.2024 18:45</td>
+                            <td><strong>₺2,800</strong></td>
+                            <td><span class="badge badge-success">Tamamlandı</span></td>
+                            <td>
+                                <button class="btn-action" onclick="alert('Sipariş detayları')"><i class="fa fa-eye"></i></button>
+                                <button class="btn-action" onclick="alert('Sipariş düzenle')"><i class="fa fa-edit"></i></button>
+                                <button class="btn-action" onclick="alert('Fatura yazdır')"><i class="fa fa-print"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td><strong>#12342</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Fatma Şahin</span>
+                                </div>
+                            </td>
+                            <td>Canva Eğitim PDF</td>
+                            <td>06.12.2024 10:20</td>
+                            <td><strong>₺325</strong></td>
+                            <td><span class="badge badge-info">İşleniyor</span></td>
+                            <td>
+                                <button class="btn-action" onclick="alert('Sipariş detayları')"><i class="fa fa-eye"></i></button>
+                                <button class="btn-action" onclick="alert('Sipariş düzenle')"><i class="fa fa-edit"></i></button>
+                                <button class="btn-action" onclick="alert('Fatura yazdır')"><i class="fa fa-print"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td><strong>#12341</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Ali Öztürk</span>
+                                </div>
+                            </td>
+                            <td>Unity Oyun Projesi</td>
+                            <td>05.12.2024 16:00</td>
+                            <td><strong>₺1,365</strong></td>
+                            <td><span class="badge badge-success">Tamamlandı</span></td>
+                            <td>
+                                <button class="btn-action" onclick="alert('Sipariş detayları')"><i class="fa fa-eye"></i></button>
+                                <button class="btn-action" onclick="alert('Sipariş düzenle')"><i class="fa fa-edit"></i></button>
+                                <button class="btn-action" onclick="alert('Fatura yazdır')"><i class="fa fa-print"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination">
+                <button class="btn-pagination"><i class="fa fa-angle-left"></i></button>
+                <button class="btn-pagination active">1</button>
+                <button class="btn-pagination">2</button>
+                <button class="btn-pagination">3</button>
+                <button class="btn-pagination">...</button>
+                <button class="btn-pagination">10</button>
+                <button class="btn-pagination"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+
+        
+        <!-- Announcements Section -->
+        <div id="announcements-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Duyuru Yönetimi</h2>
+                <button class="btn-primary" onclick="alert('Yeni duyuru ekleme formu açılacak')">
+                    <i class="fa fa-plus"></i> Yeni Duyuru Ekle
+                </button>
+            </div>
+            
+            <div class="announcements-grid">
+                <div class="announcement-card-admin">
+                    <div class="announcement-header">
+                        <span class="announcement-status active">Aktif</span>
+                        <span class="announcement-date"><i class="fa fa-calendar"></i> 7 Aralık 2024</span>
+                    </div>
+                    <div class="announcement-image-admin">
+                        <img src="../images/product/large-size/pugb.png" alt="PUBG">
+                    </div>
+                    <div class="announcement-content-admin">
+                        <h3>PUBG Mobile Yeni İtem Paketleri</h3>
+                        <p>Yeni sezon özel UC paketleri ve efsanevi kostümler şimdi mağazamızda! Hemen al, oyunda fark yarat.</p>
+                        <div class="announcement-stats">
+                            <span><i class="fa fa-eye"></i> 1,234 görüntülenme</span>
+                            <span><i class="fa fa-heart"></i> 89 beğeni</span>
+                        </div>
+                    </div>
+                    <div class="announcement-actions">
+                        <button class="btn-action" onclick="alert('Duyuru düzenle')"><i class="fa fa-edit"></i> Düzenle</button>
+                        <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Duyuru silindi')"><i class="fa fa-trash"></i> Sil</button>
+                    </div>
+                </div>
+                
+                <div class="announcement-card-admin">
+                    <div class="announcement-header">
+                        <span class="announcement-status active">Aktif</span>
+                        <span class="announcement-date"><i class="fa fa-calendar"></i> 5 Aralık 2024</span>
+                    </div>
+                    <div class="announcement-image-admin">
+                        <img src="../images/product/large-size/php.png" alt="PHP">
+                    </div>
+                    <div class="announcement-content-admin">
+                        <h3>Yazılım Paketlerinde %35 İndirim</h3>
+                        <p>PHP, Python ve JavaScript kod paketlerinde özel indirim! Profesyonel projeler için hazır kodlar.</p>
+                        <div class="announcement-stats">
+                            <span><i class="fa fa-eye"></i> 892 görüntülenme</span>
+                            <span><i class="fa fa-heart"></i> 67 beğeni</span>
+                        </div>
+                    </div>
+                    <div class="announcement-actions">
+                        <button class="btn-action" onclick="alert('Duyuru düzenle')"><i class="fa fa-edit"></i> Düzenle</button>
+                        <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Duyuru silindi')"><i class="fa fa-trash"></i> Sil</button>
+                    </div>
+                </div>
+                
+                <div class="announcement-card-admin">
+                    <div class="announcement-header">
+                        <span class="announcement-status draft">Taslak</span>
+                        <span class="announcement-date"><i class="fa fa-calendar"></i> 3 Aralık 2024</span>
+                    </div>
+                    <div class="announcement-image-admin">
+                        <img src="../images/product/large-size/logo tasarım paketi.png" alt="Logo">
+                    </div>
+                    <div class="announcement-content-admin">
+                        <h3>Logo & Sosyal Medya Paketleri</h3>
+                        <p>Markanız için profesyonel logo ve sosyal medya tasarım paketleri. Anında teslimat!</p>
+                        <div class="announcement-stats">
+                            <span><i class="fa fa-eye"></i> 0 görüntülenme</span>
+                            <span><i class="fa fa-heart"></i> 0 beğeni</span>
+                        </div>
+                    </div>
+                    <div class="announcement-actions">
+                        <button class="btn-action" onclick="alert('Duyuru düzenle')"><i class="fa fa-edit"></i> Düzenle</button>
+                        <button class="btn-action" onclick="alert('Duyuru yayınla')"><i class="fa fa-check"></i> Yayınla</button>
+                        <button class="btn-action" onclick="if(confirm('Silmek istediğinizden emin misiniz?')) alert('Duyuru silindi')"><i class="fa fa-trash"></i> Sil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Customers Section -->
+        <div id="customers-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Müşteri Yönetimi</h2>
+                <div class="header-actions">
+                    <input type="text" class="search-input" placeholder="Müşteri ara...">
+                    <button class="btn-export"><i class="fa fa-download"></i> Dışa Aktar</button>
+                </div>
+            </div>
+            
+            <div class="customers-grid">
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Ahmet Yılmaz</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> ahmet.yilmaz@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 555 123 45 67</p>
+                        <div class="customer-stats-row">
+                            <div class="customer-stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Sipariş</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">₺8,450</span>
+                                <span class="stat-label">Toplam</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">4.8</span>
+                                <span class="stat-label">Puan</span>
+                            </div>
+                        </div>
+                        <div class="customer-actions">
+                            <button class="btn-action" onclick="alert('Müşteri detayları')"><i class="fa fa-eye"></i></button>
+                            <button class="btn-action" onclick="alert('Mesaj gönder')"><i class="fa fa-envelope"></i></button>
+                            <button class="btn-action" onclick="alert('Müşteri düzenle')"><i class="fa fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Ayşe Demir</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> ayse.demir@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 555 234 56 78</p>
+                        <div class="customer-stats-row">
+                            <div class="customer-stat">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Sipariş</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">₺5,200</span>
+                                <span class="stat-label">Toplam</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">4.9</span>
+                                <span class="stat-label">Puan</span>
+                            </div>
+                        </div>
+                        <div class="customer-actions">
+                            <button class="btn-action" onclick="alert('Müşteri detayları')"><i class="fa fa-eye"></i></button>
+                            <button class="btn-action" onclick="alert('Mesaj gönder')"><i class="fa fa-envelope"></i></button>
+                            <button class="btn-action" onclick="alert('Müşteri düzenle')"><i class="fa fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Mehmet Kaya</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> mehmet.kaya@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 555 345 67 89</p>
+                        <div class="customer-stats-row">
+                            <div class="customer-stat">
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">Sipariş</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">₺12,800</span>
+                                <span class="stat-label">Toplam</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">5.0</span>
+                                <span class="stat-label">Puan</span>
+                            </div>
+                        </div>
+                        <div class="customer-actions">
+                            <button class="btn-action" onclick="alert('Müşteri detayları')"><i class="fa fa-eye"></i></button>
+                            <button class="btn-action" onclick="alert('Mesaj gönder')"><i class="fa fa-envelope"></i></button>
+                            <button class="btn-action" onclick="alert('Müşteri düzenle')"><i class="fa fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Fatma Şahin</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> fatma.sahin@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 555 456 78 90</p>
+                        <div class="customer-stats-row">
+                            <div class="customer-stat">
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Sipariş</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">₺3,950</span>
+                                <span class="stat-label">Toplam</span>
+                            </div>
+                            <div class="customer-stat">
+                                <span class="stat-value">4.7</span>
+                                <span class="stat-label">Puan</span>
+                            </div>
+                        </div>
+                        <div class="customer-actions">
+                            <button class="btn-action" onclick="alert('Müşteri detayları')"><i class="fa fa-eye"></i></button>
+                            <button class="btn-action" onclick="alert('Mesaj gönder')"><i class="fa fa-envelope"></i></button>
+                            <button class="btn-action" onclick="alert('Müşteri düzenle')"><i class="fa fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Analytics Section -->
+        <div id="analytics-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Analitik & Raporlar</h2>
+                <div class="date-range-picker">
+                    <input type="date" value="2024-11-01">
+                    <span>-</span>
+                    <input type="date" value="2024-12-07">
+                    <button class="btn-primary">Uygula</button>
+                </div>
+            </div>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Gelir Trendi</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Müşteri Büyümesi</h3>
+                    <canvas id="customerGrowthChart"></canvas>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Ürün Performansı</h3>
+                    <canvas id="productPerformanceChart"></canvas>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Trafik Kaynakları</h3>
+                    <canvas id="trafficSourceChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Section -->
+        <div id="settings-section" class="content-section" style="display:none;">
+            <div class="section-header">
+                <h2>Site Ayarları</h2>
+            </div>
+            
+            <div class="settings-grid">
+                <div class="settings-card">
+                    <h3><i class="fa fa-cog"></i> Genel Ayarlar</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Site Başlığı</label>
+                            <input type="text" class="form-control" value="Dijital Ürünler Mağazası">
+                        </div>
+                        <div class="form-group">
+                            <label>Site Açıklaması</label>
+                            <textarea class="form-control" rows="3">Türkiye'nin en güvenilir dijital ürünler mağazası</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>İletişim Email</label>
+                            <input type="email" class="form-control" value="info@dijitalmagaza.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="text" class="form-control" value="(+90) 555 123 45 67">
+                        </div>
+                        <button type="submit" class="btn-primary" onclick="event.preventDefault(); alert('Ayarlar kaydedildi!')">
+                            <i class="fa fa-save"></i> Kaydet
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="settings-card">
+                    <h3><i class="fa fa-share-alt"></i> Sosyal Medya</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Facebook</label>
+                            <input type="text" class="form-control" placeholder="https://facebook.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter</label>
+                            <input type="text" class="form-control" placeholder="https://twitter.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label>Instagram</label>
+                            <input type="text" class="form-control" placeholder="https://instagram.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label>LinkedIn</label>
+                            <input type="text" class="form-control" placeholder="https://linkedin.com/...">
+                        </div>
+                        <button type="submit" class="btn-primary" onclick="event.preventDefault(); alert('Sosyal medya ayarları kaydedildi!')">
+                            <i class="fa fa-save"></i> Kaydet
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="settings-card">
+                    <h3><i class="fa fa-credit-card"></i> Ödeme Ayarları</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Para Birimi</label>
+                            <select class="form-control">
+                                <option selected>TRY (₺)</option>
+                                <option>USD ($)</option>
+                                <option>EUR (€)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ödeme Yöntemleri</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" checked> Kredi Kartı</label>
+                                <label><input type="checkbox" checked> Havale/EFT</label>
+                                <label><input type="checkbox"> PayPal</label>
+                                <label><input type="checkbox"> Kapıda Ödeme</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" onclick="event.preventDefault(); alert('Ödeme ayarları kaydedildi!')">
+                            <i class="fa fa-save"></i> Kaydet
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="settings-card">
+                    <h3><i class="fa fa-envelope"></i> Email Ayarları</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>SMTP Sunucusu</label>
+                            <input type="text" class="form-control" placeholder="smtp.gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label>SMTP Port</label>
+                            <input type="text" class="form-control" placeholder="587">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Adresi</label>
+                            <input type="email" class="form-control" placeholder="noreply@dijitalmagaza.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Şifresi</label>
+                            <input type="password" class="form-control" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-primary" onclick="event.preventDefault(); alert('Email ayarları kaydedildi!')">
+                            <i class="fa fa-save"></i> Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>

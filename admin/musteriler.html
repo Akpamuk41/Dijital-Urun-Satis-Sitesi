@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Müşteriler - Admin Panel</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Dijital Mağaza</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Yönetici</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="urunler.html">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ürünler</span>
+                        <span class="badge">156</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siparisler.html">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Siparişler</span>
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="duyurular.html">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="musteriler.html">
+                        <i class="fa fa-users"></i>
+                        <span>Müşteriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="analitik.html">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ayarlar.html">
+                        <i class="fa fa-cog"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="btn-view-site">
+                <i class="fa fa-external-link"></i>
+                Siteyi Görüntüle
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="btn-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h2>Müşteri Yönetimi</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Müşteri ara..." id="searchCustomer">
+                </div>
+                <div class="notifications">
+                    <button class="btn-notification">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="btn-user">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content-section">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>892</h3>
+                        <p>Toplam Müşteri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+15% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-2">
+                    <div class="stat-icon">
+                        <i class="fa fa-user-plus"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>47</h3>
+                        <p>Yeni Müşteri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+8 bu hafta</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-3">
+                    <div class="stat-icon">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>234</h3>
+                        <p>VIP Müşteri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+12 bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-4">
+                    <div class="stat-icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₺51.2</h3>
+                        <p>Ort. Sipariş Değeri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+5% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="card">
+                <div class="card-body" style="padding: 15px 25px;">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <select class="form-control" onchange="filterCustomers(this.value)">
+                                <option value="all">Tüm Müşteriler</option>
+                                <option value="vip">VIP Müşteriler</option>
+                                <option value="active">Aktif Müşteriler</option>
+                                <option value="inactive">Pasif Müşteriler</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option>Sıralama: En Yeni</option>
+                                <option>Sıralama: En Eski</option>
+                                <option>Sıralama: En Çok Alışveriş</option>
+                                <option>Sıralama: En Yüksek Harcama</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-success btn-sm" onclick="exportCustomers()">
+                                <i class="fa fa-download"></i> Dışa Aktar
+                            </button>
+                            <button class="btn btn-primary btn-sm" onclick="addCustomer()">
+                                <i class="fa fa-plus"></i> Yeni Müşteri
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customers Grid -->
+            <div class="customers-grid" id="customersGrid">
+                <!-- Customer Card 1 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Ahmet Yılmaz</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> ahmet@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 532 123 4567</p>
+                        <span class="badge badge-success">VIP Müşteri</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">45</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺22,500</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(1)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(1)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(1)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Customer Card 2 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Ayşe Demir</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> ayse@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 533 234 5678</p>
+                        <span class="badge badge-info">Aktif</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">28</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺14,200</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(2)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(2)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(2)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Customer Card 3 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Mehmet Kaya</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> mehmet@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 534 345 6789</p>
+                        <span class="badge badge-success">VIP Müşteri</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">67</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺33,800</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(3)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(3)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(3)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Customer Card 4 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Fatma Şahin</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> fatma@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 535 456 7890</p>
+                        <span class="badge badge-info">Aktif</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">19</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺9,500</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(4)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(4)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(4)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Customer Card 5 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Ali Öztürk</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> ali@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 536 567 8901</p>
+                        <span class="badge badge-info">Aktif</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">32</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺16,400</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(5)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(5)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(5)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Customer Card 6 -->
+                <div class="customer-card">
+                    <div class="customer-avatar-large">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="customer-details">
+                        <h3>Zeynep Arslan</h3>
+                        <p class="customer-email"><i class="fa fa-envelope"></i> zeynep@email.com</p>
+                        <p class="customer-phone"><i class="fa fa-phone"></i> +90 537 678 9012</p>
+                        <span class="badge badge-warning">Yeni</span>
+                    </div>
+                    <div class="customer-stats-row">
+                        <div class="customer-stat">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Sipariş</span>
+                        </div>
+                        <div class="customer-stat">
+                            <span class="stat-value">₺1,500</span>
+                            <span class="stat-label">Toplam</span>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="btn-action" onclick="viewCustomer(6)" title="Görüntüle">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn-action" onclick="editCustomer(6)" title="Düzenle">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn-action" onclick="messageCustomer(6)" title="Mesaj Gönder">
+                            <i class="fa fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="admin-script.js"></script>
+    <script>
+        // Müşteri görüntüleme
+        function viewCustomer(id) {
+            showNotification('Müşteri #' + id + ' detayları görüntüleniyor...', 'info');
+        }
+        
+        // Müşteri düzenleme
+        function editCustomer(id) {
+            showNotification('Müşteri #' + id + ' düzenleniyor...', 'info');
+        }
+        
+        // Müşteriye mesaj gönderme
+        function messageCustomer(id) {
+            showNotification('Müşteri #' + id + ' için mesaj penceresi açılıyor...', 'info');
+        }
+        
+        // Yeni müşteri ekleme
+        function addCustomer() {
+            showNotification('Yeni müşteri ekleme formu açılıyor...', 'info');
+        }
+        
+        // Filtreleme
+        function filterCustomers(filter) {
+            showNotification('Filtreleme: ' + filter, 'info');
+        }
+        
+        // Dışa aktarma
+        function exportCustomers() {
+            showNotification('Müşteri listesi dışa aktarılıyor...', 'info');
+        }
+        
+        // Arama
+        document.getElementById('searchCustomer').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.customer-card');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

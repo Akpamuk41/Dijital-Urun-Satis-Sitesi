@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #1b5e20;
+            margin-bottom: 30px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-price {
+            color: #1b5e20;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .btn-wishlist {
+            background: #1b5e20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-wishlist:hover {
+            background: #145214;
+        }
+        .wishlist-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #ddd;
+        }
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .wishlist-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .wishlist-info {
+            flex: 1;
+        }
+        .btn-remove {
+            background: #e53935;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-clear {
+            background: #fb8c00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Wishlist Test Sayfası</h1>
+        
+        <h2>Test Ürünleri (Favorilere Ekle)</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/product/large-size/pugb.png" alt="PUBG">
+                <div class="product-name">PUBG Mobile UC Paketi</div>
+                <div class="product-price">₺850,00</div>
+                <button class="btn-wishlist" onclick="testAddToWishlist(1, 'PUBG Mobile UC Paketi', 850, 'images/product/large-size/pugb.png')">
+                    ❤️ Favorilere Ekle
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <img src="images/product/large-size/php.png" alt="PHP">
+                <div class="product-name">PHP Web Geliştirme Paketi</div>
+                <div class="product-price">₺3.500,00</div>
+                <button class="btn-wishlist" onclick="testAddToWishlist(2, 'PHP Web Geliştirme Paketi', 3500, 'images/product/large-size/php.png')">
+                    ❤️ Favorilere Ekle
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <img src="images/product/large-size/logo tasarım paketi.png" alt="Logo">
+                <div class="product-name">Logo Tasarım Paketi</div>
+                <div class="product-price">₺1.500,00</div>
+                <button class="btn-wishlist" onclick="testAddToWishlist(3, 'Logo Tasarım Paketi', 1500, 'images/product/large-size/logo tasarım paketi.png')">
+                    ❤️ Favorilere Ekle
+                </button>
+            </div>
+            
+            <div class="product-card">
+                <img src="images/product/large-size/canva.png" alt="Canva">
+                <div class="product-name">Canva Tasarım Eğitim PDF</div>
+                <div class="product-price">₺520,00</div>
+                <button class="btn-wishlist" onclick="testAddToWishlist(4, 'Canva Tasarım Eğitim PDF', 520, 'images/product/large-size/canva.png')">
+                    ❤️ Favorilere Ekle
+                </button>
+            </div>
+        </div>
+        
+        <div class="wishlist-section">
+            <h2>📋 Favorilerim</h2>
+            <button class="btn-clear" onclick="clearWishlist()">🗑️ Tüm Favorileri Temizle</button>
+            <div id="wishlist-container"></div>
+        </div>
+    </div>
+    
+    <script src="js/wishlist-turkish.js"></script>
+    <script>
+        function testAddToWishlist(id, name, price, image) {
+            // Görseli tam URL'ye çevir
+            const fullImageUrl = new URL(image, window.location.href).href;
+            
+            // Ürün adından tutarlı ID oluştur
+            const normalizedName = name.toLowerCase().replace(/\s+/g, '-');
+            const generatedId = normalizedName.hashCode();
+            
+            console.log('Test - Favorilere ekleniyor:', {
+                originalId: id,
+                generatedId: generatedId,
+                normalizedName: normalizedName,
+                name: name,
+                price: price,
+                image: fullImageUrl
+            });
+            
+            // Oluşturulan ID'yi kullan
+            addToWishlist(generatedId, name, price, fullImageUrl);
+            displayWishlist();
+        }
+        
+        // String için hash fonksiyonu (wishlist-turkish.js ile aynı)
+        if (!String.prototype.hashCode) {
+            String.prototype.hashCode = function() {
+                let hash = 0;
+                for (let i = 0; i < this.length; i++) {
+                    const char = this.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return Math.abs(hash);
+            };
+        }
+        
+        function displayWishlist() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const container = document.getElementById('wishlist-container');
+            
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p style="color: #999; text-align: center; padding: 40px;">Favori listeniz boş</p>';
+                return;
+            }
+            
+            container.innerHTML = wishlist.map(item => `
+                <div class="wishlist-item">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.src='images/product/large-size/1.jpg'">
+                    <div class="wishlist-info">
+                        <div class="product-name">${item.name}</div>
+                        <div class="product-price">₺${item.price.toFixed(2).replace('.', ',')}</div>
+                        <small style="color: #999;">ID: ${item.id}</small><br>
+                        <small style="color: #999; word-break: break-all;">Görsel: ${item.image}</small>
+                    </div>
+                    <button class="btn-remove" onclick="removeFromWishlistTest(${item.id})">Çıkar</button>
+                </div>
+            `).join('');
+        }
+        
+        function removeFromWishlistTest(id) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist = wishlist.filter(item => item.id !== id);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            displayWishlist();
+            updateWishlistCount();
+        }
+        
+        function clearWishlist() {
+            if (confirm('Tüm favorileri temizlemek istediğinizden emin misiniz?')) {
+                localStorage.removeItem('wishlist');
+                displayWishlist();
+                updateWishlistCount();
+            }
+        }
+        
+        // Sayfa yüklendiğinde favorileri göster
+        document.addEventListener('DOMContentLoaded', function() {
+            displayWishlist();
+            updateWishlistCount();
+        });
+    </script>
+</body>
+</html>

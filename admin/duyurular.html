@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Duyurular - Admin Panel</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Dijital Mağaza</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Yönetici</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="urunler.html">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ürünler</span>
+                        <span class="badge">156</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siparisler.html">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Siparişler</span>
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="duyurular.html">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="musteriler.html">
+                        <i class="fa fa-users"></i>
+                        <span>Müşteriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="analitik.html">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ayarlar.html">
+                        <i class="fa fa-cog"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="btn-view-site">
+                <i class="fa fa-external-link"></i>
+                Siteyi Görüntüle
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="btn-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h2>Duyuru Yönetimi</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Ara...">
+                </div>
+                <div class="notifications">
+                    <button class="btn-notification">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="btn-user">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content-section">
+            <!-- Add Announcement Form -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-plus-circle"></i> Yeni Duyuru Ekle
+                </div>
+                <div class="card-body">
+                    <form id="announcementForm" onsubmit="return addAnnouncement(event)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Duyuru Başlığı *</label>
+                                    <input type="text" class="form-control" id="announcementTitle" placeholder="Örn: Kasım Ayı İndirimleri" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Duyuru Tarihi *</label>
+                                    <input type="date" class="form-control" id="announcementDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Durum</label>
+                                    <select class="form-control" id="announcementStatus">
+                                        <option value="active">Aktif</option>
+                                        <option value="draft">Taslak</option>
+                                        <option value="archived">Arşiv</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kısa Açıklama *</label>
+                            <textarea class="form-control" id="announcementShort" rows="3" placeholder="Ana sayfada görünecek kısa açıklama" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Detaylı İçerik *</label>
+                            <textarea class="form-control" id="announcementContent" rows="6" placeholder="Modal'da görünecek detaylı içerik" required></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Duyuru Görseli</label>
+                                    <div class="file-upload-wrapper">
+                                        <button class="file-upload-btn" type="button">
+                                            <i class="fa fa-cloud-upload"></i> Görsel Seç
+                                        </button>
+                                        <input type="file" id="announcementImage" accept="image/*" />
+                                    </div>
+                                    <small class="form-text text-muted">Önerilen boyut: 800x600px</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>PDF Dosyası</label>
+                                    <div class="file-upload-wrapper">
+                                        <button class="file-upload-btn" type="button">
+                                            <i class="fa fa-file-pdf-o"></i> PDF Seç
+                                        </button>
+                                        <input type="file" accept=".pdf" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Word Belgesi</label>
+                                    <div class="file-upload-wrapper">
+                                        <button class="file-upload-btn" type="button">
+                                            <i class="fa fa-file-word-o"></i> Word Seç
+                                        </button>
+                                        <input type="file" accept=".doc,.docx" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-save"></i> Duyuruyu Kaydet
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fa fa-refresh"></i> Formu Temizle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Announcements List -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <i class="fa fa-list"></i> Mevcut Duyurular
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-success" onclick="exportAnnouncements()">
+                            <i class="fa fa-download"></i> Dışa Aktar
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="announcementsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Başlık</th>
+                                    <th>Tarih</th>
+                                    <th>Kısa Açıklama</th>
+                                    <th>Durum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="announcementsTableBody">
+                                <tr>
+                                    <td>1</td>
+                                    <td>PUBG Mobile Yeni İtem Paketleri</td>
+                                    <td>07.12.2024</td>
+                                    <td>Yeni sezon özel UC paketleri ve efsanevi kostümler...</td>
+                                    <td><span class="badge badge-success">Aktif</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" onclick="editAnnouncement(1)">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="viewAnnouncement(1)">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteAnnouncement(1)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Yazılım Paketlerinde %35 İndirim</td>
+                                    <td>05.12.2024</td>
+                                    <td>PHP, Python ve JavaScript kod paketlerinde özel indirim...</td>
+                                    <td><span class="badge badge-success">Aktif</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" onclick="editAnnouncement(2)">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="viewAnnouncement(2)">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteAnnouncement(2)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Logo & Sosyal Medya Paketleri</td>
+                                    <td>03.12.2024</td>
+                                    <td>Markanız için profesyonel logo ve sosyal medya tasarım...</td>
+                                    <td><span class="badge badge-success">Aktif</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" onclick="editAnnouncement(3)">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="viewAnnouncement(3)">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteAnnouncement(3)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="admin-script.js"></script>
+    <script>
+        // Duyuru ekleme fonksiyonu
+        function addAnnouncement(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('announcementTitle').value;
+            const date = document.getElementById('announcementDate').value;
+            const status = document.getElementById('announcementStatus').value;
+            const shortDesc = document.getElementById('announcementShort').value;
+            const content = document.getElementById('announcementContent').value;
+            
+            // Yeni satır ekle
+            const tbody = document.getElementById('announcementsTableBody');
+            const newId = tbody.children.length + 1;
+            
+            const statusBadge = status === 'active' ? 'success' : status === 'draft' ? 'warning' : 'secondary';
+            const statusText = status === 'active' ? 'Aktif' : status === 'draft' ? 'Taslak' : 'Arşiv';
+            
+            const newRow = `
+                <tr>
+                    <td>${newId}</td>
+                    <td>${title}</td>
+                    <td>${new Date(date).toLocaleDateString('tr-TR')}</td>
+                    <td>${shortDesc.substring(0, 50)}...</td>
+                    <td><span class="badge badge-${statusBadge}">${statusText}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-info" onclick="editAnnouncement(${newId})">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" onclick="viewAnnouncement(${newId})">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteAnnouncement(${newId})">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+            
+            tbody.insertAdjacentHTML('afterbegin', newRow);
+            
+            // Formu temizle
+            document.getElementById('announcementForm').reset();
+            
+            // Başarı mesajı
+            showNotification('Duyuru başarıyla eklendi!', 'success');
+            
+            return false;
+        }
+        
+        // Duyuru düzenleme
+        function editAnnouncement(id) {
+            showNotification('Duyuru düzenleme özelliği yakında eklenecek', 'info');
+        }
+        
+        // Duyuru görüntüleme
+        function viewAnnouncement(id) {
+            showNotification('Duyuru detayları yakında eklenecek', 'info');
+        }
+        
+        // Duyuru silme
+        function deleteAnnouncement(id) {
+            if (confirm('Bu duyuruyu silmek istediğinizden emin misiniz?')) {
+                const row = event.target.closest('tr');
+                row.remove();
+                showNotification('Duyuru silindi!', 'success');
+            }
+        }
+        
+        // Dışa aktarma
+        function exportAnnouncements() {
+            showNotification('Duyurular dışa aktarılıyor...', 'info');
+        }
+        
+        // Bugünün tarihini varsayılan olarak ayarla
+        document.getElementById('announcementDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>

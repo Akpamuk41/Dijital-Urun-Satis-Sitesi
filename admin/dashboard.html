@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - Admin Panel</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Dijital Mağaza</span>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Yönetici</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="urunler.html">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ürünler</span>
+                        <span class="badge">156</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="siparisler.html">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Siparişler</span>
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="duyurular.html">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="musteriler.html">
+                        <i class="fa fa-users"></i>
+                        <span>Müşteriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="analitik.html">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ayarlar.html">
+                        <i class="fa fa-cog"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../index.html" class="btn-view-site">
+                <i class="fa fa-external-link"></i>
+                Siteyi Görüntüle
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="btn-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Ara...">
+                </div>
+                <div class="notifications">
+                    <button class="btn-notification">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="btn-user">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admin</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="content-section">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>156</h3>
+                        <p>Toplam Ürün</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+12% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-2">
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>1,234</h3>
+                        <p>Toplam Sipariş</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+8% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-3">
+                    <div class="stat-icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>₺45,678</h3>
+                        <p>Aylık Gelir</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+23% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-4">
+                    <div class="stat-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>892</h3>
+                        <p>Aktif Müşteri</p>
+                        <div class="stat-trend">
+                            <i class="fa fa-arrow-up"></i>
+                            <span>+15% bu ay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Satış Grafiği</h3>
+                        <div class="chart-actions">
+                            <select class="chart-period">
+                                <option>Son 7 Gün</option>
+                                <option>Son 30 Gün</option>
+                                <option>Son 3 Ay</option>
+                                <option>Bu Yıl</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Kategori Dağılımı</h3>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Orders & Top Products -->
+            <div class="data-row">
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Son Siparişler</h3>
+                        <a href="siparisler.html" class="btn-view-all">Tümünü Gör</a>
+                    </div>
+                    <div class="data-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sipariş No</th>
+                                    <th>Müşteri</th>
+                                    <th>Ürün</th>
+                                    <th>Tutar</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#12345</td>
+                                    <td>Ahmet Yılmaz</td>
+                                    <td>PUBG Mobile UC</td>
+                                    <td>₺500</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12344</td>
+                                    <td>Ayşe Demir</td>
+                                    <td>Logo Tasarım Paketi</td>
+                                    <td>₺1,800</td>
+                                    <td><span class="badge badge-warning">Beklemede</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12343</td>
+                                    <td>Mehmet Kaya</td>
+                                    <td>PHP Script Paketi</td>
+                                    <td>₺2,800</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12342</td>
+                                    <td>Fatma Şahin</td>
+                                    <td>Canva Eğitim PDF</td>
+                                    <td>₺325</td>
+                                    <td><span class="badge badge-info">İşleniyor</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#12341</td>
+                                    <td>Ali Öztürk</td>
+                                    <td>Unity Oyun Projesi</td>
+                                    <td>₺1,365</td>
+                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>En Çok Satan Ürünler</h3>
+                    </div>
+                    <div class="data-body">
+                        <div class="top-products">
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/pugb.png" alt="PUBG">
+                                </div>
+                                <div class="product-info">
+                                    <h4>PUBG Mobile UC</h4>
+                                    <p>234 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺117,000</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/logo tasarım paketi.png" alt="Logo">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Logo Tasarım Paketi</h4>
+                                    <p>156 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺280,800</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/php.png" alt="PHP">
+                                </div>
+                                <div class="product-info">
+                                    <h4>PHP Script Paketi</h4>
+                                    <p>98 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺274,400</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <img src="../images/product/large-size/canva.png" alt="Canva">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Canva Eğitim PDF</h4>
+                                    <p>187 satış</p>
+                                </div>
+                                <div class="product-revenue">
+                                    <span>₺60,775</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>
