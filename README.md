@@ -1,15 +1,10 @@
-# 🛒 Dijital Ürünler Mağazası
+# Dijital Ürünler Mağazası
 
 Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. Oyun içi ürünler, yazılım, tasarım ve dijital eğitim içerikleri için kapsamlı bir alışveriş deneyimi sunar.
 
-![Version](https://img.shields.io/badge/version-2.0-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Bootstrap](https://img.shields.io/badge/bootstrap-4.1.3-purple.svg)
-![Chart.js](https://img.shields.io/badge/chart.js-4.4.0-orange.svg)
-
 ---
 
-## 📋 İçindekiler
+##  İçindekiler
 
 - [Özellikler](#-özellikler)
 - [Teknolojiler](#-teknolojiler)
@@ -18,15 +13,11 @@ Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. 
 - [Admin Panel](#-admin-panel)
 - [Sayfalar](#-sayfalar)
 - [Kullanım](#-kullanım)
-- [Ekran Görüntüleri](#-ekran-görüntüleri)
-- [Katkıda Bulunma](#-katkıda-bulunma)
-- [Lisans](#-lisans)
-
 ---
 
-## ✨ Özellikler
+##  Özellikler
 
-### 🎨 Frontend Özellikleri
+# Frontend Özellikleri
 
 - ✅ **Modern ve Responsive Tasarım** - Tüm cihazlarda mükemmel görünüm
 - ✅ **Ürün Kataloğu** - Kategorilere göre filtreleme ve arama
@@ -41,7 +32,7 @@ Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. 
 - ✅ **Çoklu Dil Desteği** - Türkçe yerelleştirme
 - ✅ **Para Birimi** - TRY (₺) formatı
 
-### 🔧 Admin Panel Özellikleri
+# Admin Panel Özellikleri
 
 - ✅ **Modern Dashboard** - İstatistikler ve grafikler
 - ✅ **Ürün Yönetimi** - Ekleme, düzenleme, silme
@@ -54,9 +45,9 @@ Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. 
 
 ---
 
-## 🚀 Teknolojiler
+## Teknolojiler
 
-### Frontend
+# Frontend
 - **HTML5** - Semantik yapı
 - **CSS3** - Modern stil ve animasyonlar
 - **JavaScript (ES6+)** - Vanilla JS, modern syntax
@@ -67,13 +58,13 @@ Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. 
 - **Font Awesome** - İkon kütüphanesi
 - **Animate.css** - Animasyonlar
 
-### Admin Panel
+# Admin Panel
 - **Chart.js 4.4.0** - İnteraktif grafikler
 - **Custom CSS** - Modern admin tasarımı
 - **Vanilla JavaScript** - Hafif ve hızlı
 - **LocalStorage API** - Veri kalıcılığı
 
-### Özellikler
+# Özellikler
 - **Responsive Design** - Mobil, tablet, desktop
 - **LocalStorage** - Sepet ve favori kalıcılığı
 - **CSS Grid & Flexbox** - Modern layout
@@ -82,48 +73,29 @@ Modern, responsive ve tam özellikli bir dijital ürünler e-ticaret platformu. 
 
 ---
 
-## 📦 Kurulum
+### 📦 Kurulum
 
-### Gereksinimler
+## Gereksinimler
 - Modern web tarayıcı (Chrome, Firefox, Safari, Edge)
 - Yerel web sunucusu (opsiyonel)
 
-### Adımlar
+## Adımlar
 
 1. **Projeyi İndirin**
 ```bash
 git clone https://github.com/kullaniciadi/dijital-urun-sitesi.git
 cd dijital-urun-sitesi
 ```
-
-2. **Dosyaları Açın**
-- `index.html` dosyasını tarayıcınızda açın
-- Veya yerel sunucu kullanın:
-
-```bash
-# Python ile
-python -m http.server 8000
-
-# Node.js ile (http-server)
-npx http-server
-
-# PHP ile
-php -S localhost:8000
+2. **Tarayıcıda Görüntüleyin**
+```
+https://akpamuk41.github.io/Dijital-Urun-Satis-Sitesi/index.html
 ```
 
-3. **Tarayıcıda Görüntüleyin**
-```
-http://localhost:8000
-```
+3. **Admin Paneline Erişim**
 
-4. **Admin Paneline Erişim**
-```
-http://localhost:8000/admin/dashboard.html
-```
+https://akpamuk41.github.io/Dijital-Urun-Satis-Sitesi/admin/index.html
 
----
-
-## 📁 Proje Yapısı
+# 📁 Proje Yapısı
 
 ```
 dijital-urun-sitesi/
@@ -182,16 +154,16 @@ Kullanıcı Adı: admin
 Şifre: admin123
 ```
 
-### Admin Sayfaları
+## Admin Sayfaları
 
-#### 1. 📊 Dashboard (`dashboard.html`)
+# 1. Dashboard (`dashboard.html`)
 - Genel istatistikler (4 stat kartı)
 - Satış grafiği (Chart.js Line Chart)
 - Kategori dağılımı (Doughnut Chart)
 - Son siparişler tablosu
 - En çok satan ürünler
 
-#### 2. 🛍️ Ürünler (`urunler.html`)
+# 2. Ürünler (`urunler.html`)
 - Ürün listesi ve arama
 - Yeni ürün ekleme formu
 - Ürün düzenleme/silme
@@ -199,7 +171,7 @@ Kullanıcı Adı: admin
 - Stok yönetimi
 - Toplu işlemler
 
-#### 3. 📦 Siparişler (`siparisler.html`)
+# 3. Siparişler (`siparisler.html`)
 - Sipariş listesi
 - Durum güncelleme (Beklemede, İşleniyor, Tamamlandı)
 - Sipariş detayları
@@ -207,7 +179,7 @@ Kullanıcı Adı: admin
 - Tarih filtreleme
 - Dışa aktarma
 
-#### 4. 👥 Müşteriler (`musteriler.html`)
+# 4. Müşteriler (`musteriler.html`)
 - Müşteri kartları (grid layout)
 - Müşteri istatistikleri
 - VIP müşteri yönetimi
@@ -215,14 +187,14 @@ Kullanıcı Adı: admin
 - Mesaj gönderme
 - Sipariş geçmişi
 
-#### 5. 📢 Duyurular (`duyurular.html`)
+# 5. Duyurular (`duyurular.html`)
 - Duyuru oluşturma
 - Görsel yükleme
 - Aktif/Pasif durumu
 - Duyuru düzenleme/silme
 - Önizleme
 
-#### 6. 📈 Analitik (`analitik.html`)
+# 6. Analitik (`analitik.html`)
 **6 Farklı Grafik:**
 - Gelir Trendi (Line Chart)
 - Kategori Dağılımı (Doughnut Chart)
@@ -237,7 +209,7 @@ Kullanıcı Adı: admin
 - Rapor indirme
 - Gerçek zamanlı veriler
 
-#### 7. ⚙️ Ayarlar (`ayarlar.html`)
+# 7. Ayarlar (`ayarlar.html`)
 **8 Ayar Kategorisi:**
 - Genel Ayarlar (site bilgileri)
 - E-posta Ayarları (SMTP)
@@ -250,9 +222,9 @@ Kullanıcı Adı: admin
 
 ---
 
-## 📄 Sayfalar
+# Sayfalar
 
-### Müşteri Sayfaları
+# Müşteri Sayfaları
 
 | Sayfa | Dosya | Açıklama |
 |-------|-------|----------|
@@ -272,9 +244,9 @@ Kullanıcı Adı: admin
 
 ---
 
-## 💻 Kullanım
+# Kullanım
 
-### Sepet İşlemleri
+# Sepet İşlemleri
 
 ```javascript
 // Sepete ürün ekleme
@@ -291,7 +263,7 @@ function sepetiGoster() {
 }
 ```
 
-### Favori İşlemleri
+# Favori İşlemleri
 
 ```javascript
 // Favorilere ekleme
@@ -304,7 +276,7 @@ function favoriyeEkle(urunId) {
 }
 ```
 
-### Admin Chart.js Kullanımı
+# Admin Chart.js Kullanımı
 
 ```javascript
 // Satış grafiği oluşturma
@@ -325,9 +297,9 @@ new Chart(ctx, {
 
 ---
 
-## 🎨 Tema Özelleştirme
+## Tema Özelleştirme
 
-### CSS Variables (Admin Panel)
+# CSS Variables (Admin Panel)
 
 ```css
 :root {
@@ -341,7 +313,7 @@ new Chart(ctx, {
 }
 ```
 
-### Renk Paletini Değiştirme
+# Renk Paletini Değiştirme
 
 1. `admin/admin-style.css` dosyasını açın
 2. `:root` bölümündeki renk değerlerini değiştirin
@@ -349,7 +321,7 @@ new Chart(ctx, {
 
 ---
 
-## 📱 Responsive Breakpoints
+# Responsive Breakpoints
 
 ```css
 /* Mobil */
@@ -362,17 +334,7 @@ new Chart(ctx, {
 @media (min-width: 1025px) { }
 ```
 
----
 
-## 🔒 Güvenlik
-
-- ✅ Form validasyonu
-- ✅ XSS koruması
-- ✅ CSRF token desteği (backend entegrasyonu için hazır)
-- ✅ Güvenli ödeme sayfası
-- ✅ LocalStorage şifreleme (opsiyonel)
-
----
 
 ## 🌐 Tarayıcı Desteği
 
@@ -383,46 +345,6 @@ new Chart(ctx, {
 | Safari | ✅ 14+ |
 | Edge | ✅ 90+ |
 | Opera | ✅ 76+ |
-
----
-
-## 📊 Performans
-
-- ⚡ Sayfa yükleme: < 2 saniye
-- ⚡ First Contentful Paint: < 1.5 saniye
-- ⚡ Time to Interactive: < 3 saniye
-- ⚡ Lighthouse Score: 90+
-
----
-
-## 🔄 Güncellemeler
-
-### v2.0 (Aralık 2024)
-- ✅ Modern admin panel eklendi
-- ✅ Chart.js entegrasyonu
-- ✅ 7 admin sayfası oluşturuldu
-- ✅ Responsive admin tasarımı
-- ✅ Analitik ve raporlama sistemi
-
-### v1.0 (Kasım 2024)
-- ✅ İlk sürüm yayınlandı
-- ✅ Temel e-ticaret özellikleri
-- ✅ Sepet ve favori sistemi
-- ✅ Türkçe yerelleştirme
-
----
-
-## 🤝 Katkıda Bulunma
-
-Katkılarınızı bekliyoruz! Lütfen şu adımları izleyin:
-
-1. Projeyi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/YeniOzellik`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Yeni özellik eklendi'`)
-4. Branch'inizi push edin (`git push origin feature/YeniOzellik`)
-5. Pull Request oluşturun
-
----
 
 ## 📝 Yapılacaklar
 
@@ -443,46 +365,6 @@ Katkılarınızı bekliyoruz! Lütfen şu adımları izleyin:
 - Admin paneli demo verilerle çalışmaktadır
 - Backend entegrasyonu gereklidir
 - Gerçek ödeme sistemi entegre edilmemiştir
-
----
-
-## 📞 İletişim
-
-- **Proje Sahibi:** [Adınız]
-- **E-posta:** info@dijitalurunler.com
-- **Website:** https://dijitalurunler.com
-- **GitHub:** https://github.com/kullaniciadi/dijital-urun-sitesi
-
----
-
-## 📜 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
-
----
-
-## 🙏 Teşekkürler
-
-- Bootstrap ekibine
-- Chart.js geliştiricilerine
-- Font Awesome'a
-- Tüm açık kaynak katkıda bulunanlara
-
----
-
-## 📸 Ekran Görüntüleri
-
-### Ana Sayfa
-![Ana Sayfa](screenshots/homepage.png)
-
-### Ürün Listesi
-![Ürün Listesi](screenshots/products.png)
-
-### Admin Dashboard
-![Admin Dashboard](screenshots/admin-dashboard.png)
-
-### Admin Analitik
-![Admin Analitik](screenshots/admin-analytics.png)
 
 ---
 
