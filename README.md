@@ -146,14 +146,6 @@ dijital-urun-sitesi/
 
 ---
 
-## 🎛️ Admin Panel
-
-### Giriş Bilgileri
-```
-Kullanıcı Adı: admin
-Şifre: admin123
-```
-
 ## Admin Sayfaları
 
 # 1. Dashboard (`dashboard.html`)
